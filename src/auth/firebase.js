@@ -31,6 +31,7 @@ export const createUser = (email, password) => {
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
+      console.log(user);
     })
     .catch((error) => {
       console.log(error);
@@ -42,7 +43,7 @@ export const signInUser = (email, password) => {
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
-      console.log(user);
+      console.log("signin", user);
     })
     .catch((error) => {
       console.log(error);
