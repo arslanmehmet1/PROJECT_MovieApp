@@ -1,11 +1,9 @@
-import Login from "./pages/Login";
-import Register from "./pages/Register";
+import AppRouter from "./router/AppRouter";
 
 function App() {
   return (
     <>
-      <Login />
-      <Register />
+      <AppRouter />
     </>
   );
 }
