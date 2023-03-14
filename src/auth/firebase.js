@@ -8,6 +8,7 @@ import {
   signOut,
   sendPasswordResetEmail,
 } from "firebase/auth";
+import { useState } from "react";
 
 // TODO: Replace the following with your app's Firebase project configuration at project settings part
 // See: https://firebase.google.com/docs/web/learn-more#config-object
@@ -35,6 +36,8 @@ export const createUser = (email, password) => {
     })
     .catch((error) => {
       console.log(error);
+      const [message, setMessage] = useState("");
+      setMessage(error);
     });
 };
 

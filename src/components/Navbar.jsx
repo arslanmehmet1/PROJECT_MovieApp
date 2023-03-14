@@ -6,8 +6,10 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import LiveTvIcon from "@mui/icons-material/LiveTv";
 import { Margin } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
+  const navigate = useNavigate();
   return (
     <div className="mb-5">
       <Box sx={{ flexGrow: 1 }}>
@@ -15,15 +17,21 @@ export default function Navbar() {
           <Toolbar>
             <LiveTvIcon
               color="inherit"
-              sx={{ mr: 2, fontSize: "35px" }}
+              onClick={() => navigate("/")}
+              sx={{ mr: 2, fontSize: "35px", cursor: "pointer" }}
             ></LiveTvIcon>
-            <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
+            <Typography
+              variant="h5"
+              component="div"
+              sx={{ flexGrow: 1, cursor: "pointer" }}
+              onClick={() => navigate("/")}
+            >
               Arslan Cinema
             </Typography>
             <Button
               variant="outlined"
               color="inherit"
-              href="/"
+              onClick={() => navigate("/")}
               sx={{ marginRight: "1rem" }}
             >
               Main
@@ -31,7 +39,7 @@ export default function Navbar() {
             <Button
               variant="outlined"
               color="inherit"
-              href="/login"
+              onClick={() => navigate("/login")}
               sx={{ marginRight: "1rem" }}
             >
               Login
@@ -39,7 +47,7 @@ export default function Navbar() {
             <Button
               variant="outlined"
               color="inherit"
-              href="/register"
+              onClick={() => navigate("/register")}
               sx={{ marginRight: "2rem" }}
             >
               Register

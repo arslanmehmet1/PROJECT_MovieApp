@@ -6,6 +6,8 @@ import CardMedia from "@mui/material/CardMedia";
 import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
 import { CardActionArea, CardActions } from "@mui/material";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
 
 const Main = () => {
   const [movies, setMovies] = useState("");
@@ -16,7 +18,6 @@ const Main = () => {
     try {
       const { data } = await axios(url);
       setMovies(data.results);
-      console.log(movies);
     } catch (error) {
       console.log(error);
     }
@@ -30,43 +31,52 @@ const Main = () => {
 
   return (
     <div>
+      <div class="search">
+        <input type="text" placeholder="Search Movie" />
+        <Button variant="outlined" sx={{ marginLeft: "1rem" }}>
+          Search
+        </Button>
+      </div>
+
       <Grid
         container
         spacing={2}
         justifyContent="center"
         alignItems="center"
-        sx={{ mt: "3.5rem" }}
+        sx={{ mt: "0.1rem" }}
       >
-        {movies.map((movie, index) => {
-          const { poster_path, title } = movie;
+        {movies &&
+          movies.map((movie, index) => {
+            const { poster_path, title } = movie;
+            console.log(movie, index + "");
 
-          return (
-            <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
-              <Card>
-                <CardActionArea>
-                  <CardMedia
-                    component="img"
-                    image={`https://image.tmdb.org/t/p/w1280${poster_path}`}
-                    alt="img"
-                    // sx={{ maxWidth: 345 }}
-                    // height="140"
-                    // width="140"
-                  />
-                  <CardContent sx={{ background: "#1976D2" }}>
-                    <Typography
-                      gutterBottom
-                      variant="h5"
-                      component="div"
-                      align="center"
-                    >
-                      {title}
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
-            </Grid>
-          );
-        })}
+            return (
+              <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
+                <Card>
+                  <CardActionArea>
+                    <CardMedia
+                      component="img"
+                      image={`https://image.tmdb.org/t/p/w1280${poster_path}`}
+                      alt="img"
+                      // sx={{ maxWidth: 345 }}
+                      // height="140"
+                      // width="140"
+                    />
+                    <CardContent sx={{ background: "#1976D2" }}>
+                      <Typography
+                        gutterBottom
+                        variant="h5"
+                        component="div"
+                        align="center"
+                      >
+                        {title}
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
+              </Grid>
+            );
+          })}
       </Grid>
     </div>
   );
